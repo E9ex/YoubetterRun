@@ -11,7 +11,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GroundSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GroundTile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Obstacle.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,7 +84,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683660917692</updated>
       <workItem from="1683660920686" duration="5928000" />
-      <workItem from="1683720510459" duration="9274000" />
+      <workItem from="1683720510459" duration="14884000" />
     </task>
     <servers />
   </component>

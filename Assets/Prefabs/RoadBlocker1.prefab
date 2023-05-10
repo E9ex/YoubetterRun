@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1169650033830654672}
   - component: {fileID: 1169650033829523472}
   - component: {fileID: 8069851067096725129}
-  - component: {fileID: -3732462008939738884}
   m_Layer: 0
   m_Name: RoadBlocker1
   m_TagString: Obstacles
@@ -98,15 +97,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2382143, y: 0.36154246, z: 0.4487355}
   m_Center: {x: 0.000000059604645, y: -0.000000044703494, z: 0.22436775}
---- !u!114 &-3732462008939738884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1169650033827262160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8556fffa6fe604abb9383187105910a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

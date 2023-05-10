@@ -7,6 +7,7 @@ public class GroundTile : MonoBehaviour
 {
     private GroundSpawner _groundSpawner;
     public GameObject obstaclePrefab;
+    
 
     private void Start()
     {
@@ -22,7 +23,7 @@ public class GroundTile : MonoBehaviour
 
     void spawnObstacle()
     {
-        int ObsIndex = Random.Range(2, 5);//ındis numarasından dolayı bu sekilde
+        int ObsIndex = Random.Range(2, 5);//ındis numarasından dolayı bu sekilde engeller bu .
         Transform spawnPoint = transform.GetChild(ObsIndex).transform;
         Instantiate(obstaclePrefab, spawnPoint.position, Quaternion.identity,transform);
     }
