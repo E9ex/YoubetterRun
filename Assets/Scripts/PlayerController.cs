@@ -9,11 +9,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 5;
     private Rigidbody rb;
     private float HorizontalInput;
-   // private bool isGrounded = true;
-   public float speedIncreasePoint = .1f;
-    [SerializeField] private LayerMask groundedmask;
-    [SerializeField] private float jumpforce = 1f;
-    private GameManager _gameManager;
+    public float speedIncreasePoint = .1f;
+   private GameManager _gameManager;
     
     
     
@@ -31,6 +28,7 @@ public class PlayerController : MonoBehaviour
         }
         Vector3 forwardMove = transform.forward * speed * Time.deltaTime;
         Vector3 horizontalMove = transform.right * HorizontalInput * speed * Time.deltaTime;
+        
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
         
 
@@ -48,7 +46,10 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-            
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
+        }
     }
 
 
