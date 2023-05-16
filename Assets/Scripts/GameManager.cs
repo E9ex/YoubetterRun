@@ -7,20 +7,22 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-  [SerializeField] int score = 0;
+ public static int  score = 0;
   public TextMeshProUGUI Scoretext;
   private PlayerController PlayerController;
 
 
   private void Awake()
   {
-    PlayerController = GetComponent<PlayerController>();
+    PlayerController = GameObject.FindObjectOfType<PlayerController>();
   }
 
   public void addPoints(int point)
   {
     score += point;
-    Scoretext.text = " "+score.ToString();
+    Scoretext.text = "Score: " + score;
     PlayerController.speed += PlayerController.speedIncreasePoint;
   }
+
+  
 }

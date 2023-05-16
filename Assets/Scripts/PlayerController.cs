@@ -11,13 +11,15 @@ public class PlayerController : MonoBehaviour
     private float HorizontalInput;
     public float speedIncreasePoint = .1f;
    private GameManager _gameManager;
+   private Animator zipladiMi;
     
     
     
     private void Awake()
     {
-        _gameManager = GetComponent<GameManager>();
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
+        zipladiMi = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -30,7 +32,10 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMove = transform.right * HorizontalInput * speed * Time.deltaTime;
         
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
-        
+        if (HorizontalInput==0)
+        {
+            zipladiMi.SetBool("zipla",false);
+        }
 
     }
 
@@ -40,6 +45,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+            zipladiMi.SetBool("zipla",true);
+          
         }
     }
 
@@ -50,6 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
         }
+       
     }
 
 
@@ -78,7 +86,8 @@ public class PlayerController : MonoBehaviour
     public void restartGame()
     {
         alive = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        GameManager.score = 0;
     }
 
 
