@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speedIncreasePoint = .1f;
    private GameManager _gameManager;
    private Animator zipladiMi;
+   
    private bool isJump = true;
    public static bool isRestart = false;
    private void Awake()
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
         {
             alive = true;
             _gameManager.taptoplay.gameObject.SetActive(false);
+            _gameManager.helpbutton.gameObject.SetActive(false);
+            _gameManager.basladiMi.SetBool("Basla",true);
         }
         else
         {
@@ -92,5 +95,6 @@ public class PlayerController : MonoBehaviour
         isRestart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         GameManager.score = 0;
+        
     }
 }//class

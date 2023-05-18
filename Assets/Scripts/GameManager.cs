@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
  public static int  score = 0;
  public static int  bestscore = 0;
   public TextMeshProUGUI Scoretext,BestScoretext;
-  public Button taptoplay;
+  public Button taptoplay,helpbutton;
   private PlayerController PlayerController;
+  public GameObject helpPanel;
+  public Animator basladiMi;
   private void Awake()
   {
     PlayerController = GameObject.FindObjectOfType<PlayerController>();
@@ -33,5 +35,11 @@ public class GameManager : MonoBehaviour
   {
     PlayerController.alive = true;
     taptoplay.gameObject.SetActive(false);
+    helpbutton.gameObject.SetActive(false);
+     basladiMi.SetBool("Basla",true);
   }
+  public  void infoVer()
+  {
+    helpPanel.SetActive(!helpPanel.activeSelf);
+  } 
 }
