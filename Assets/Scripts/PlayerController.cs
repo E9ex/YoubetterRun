@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public float speedIncreasePoint = .1f;
    private GameManager _gameManager;
    private Animator zipladiMi;
-    
+   private bool isJump = true;
     
     
     private void Awake()
@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
+        HorizontalInput = Input.GetAxis("Horizontal");
         Vector3 forwardMove = transform.forward * speed * Time.deltaTime;
         Vector3 horizontalMove = transform.right * HorizontalInput * speed * Time.deltaTime;
-        
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
         if (HorizontalInput==0)
         {
@@ -41,12 +41,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        HorizontalInput = Input.GetAxis("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&&isJump)
         {
             Jump();
             zipladiMi.SetBool("zipla",true);
-          
+            isJump = false;
         }
     }
 
@@ -57,7 +56,6 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
         }
-       
     }
 
 
@@ -75,6 +73,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             _gameManager.addPoints(8);
+        }
+        if (other.CompareTag("path"))
+        {
+            isJump = true;
         }
     }
     public void die()

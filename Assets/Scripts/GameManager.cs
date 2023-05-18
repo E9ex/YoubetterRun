@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
  public static int  score = 0;
-  public TextMeshProUGUI Scoretext;
+ public static int  bestscore = 0;
+  public TextMeshProUGUI Scoretext,BestScoretext;
   private PlayerController PlayerController;
 
 
@@ -17,11 +18,23 @@ public class GameManager : MonoBehaviour
     PlayerController = GameObject.FindObjectOfType<PlayerController>();
   }
 
+  private void Start()
+  {
+    BestScoretext.text = "BestScore: "+PlayerPrefs.GetInt("bestscore").ToString();
+    bestscore = PlayerPrefs.GetInt("bestscore");
+    BestScoretext.text = "Best: "+bestscore.ToString();
+  }
+
   public void addPoints(int point)
   {
     score += point;
     Scoretext.text = "Score: " + score;
     PlayerController.speed += PlayerController.speedIncreasePoint;
+    if (score > bestscore)
+    {
+      bestscore = score;
+      PlayerPrefs.SetInt("bestscore", bestscore);
+    }
   }
 
   
