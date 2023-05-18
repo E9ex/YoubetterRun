@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
  public static int  score = 0;
  public static int  bestscore = 0;
-  public TextMeshProUGUI Scoretext,BestScoretext;
+  public TextMeshProUGUI Scoretext,BestScoretext,restartPanelScoretext;
   public Button taptoplay,helpbutton;
   private PlayerController PlayerController;
   public GameObject helpPanel;
@@ -41,5 +41,10 @@ public class GameManager : MonoBehaviour
   public  void infoVer()
   {
     helpPanel.SetActive(!helpPanel.activeSelf);
-  } 
+  }
+  public void Quit()
+  {
+    Application.Quit();
+    Debug.Log("çıkış yapıldı.");
+  }
 }

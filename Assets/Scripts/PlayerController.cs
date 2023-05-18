@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
    private GameManager _gameManager;
    private Animator zipladiMi;
    public ragdollController RagdollController;
-   
+   public GameObject restartPanel;
    private bool isJump = true;
    public static bool isRestart = false;
    private void Awake()
@@ -46,10 +46,6 @@ public class PlayerController : MonoBehaviour
         Vector3 forwardMove = transform.forward * speed * Time.deltaTime;
         Vector3 horizontalMove = transform.right * HorizontalInput * speed * Time.deltaTime;
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
-       // if (HorizontalInput==0)
-       //  {
-       //      zipladiMi.SetBool("zipla",false);
-       //  }
     }
     private void Update()
     {
@@ -91,7 +87,9 @@ public class PlayerController : MonoBehaviour
     {
         alive = false;
         Debug.Log("öldük bekle 2 saniye.");
-        Invoke("restartGame",4);
+        restartPanel.SetActive(true);
+        _gameManager.restartPanelScoretext.text = "Score: " + GameManager.score;
+       // Invoke("restartGame",4);// bunu unutma
         cl.enabled=false;
         rb.isKinematic = true;
         RagdollController.OpenRigidbody();
@@ -101,6 +99,6 @@ public class PlayerController : MonoBehaviour
         isRestart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         GameManager.score = 0;
-        
+        restartPanel.SetActive(false);
     }
 }//class

@@ -515,6 +515,7 @@ MonoBehaviour:
   speed: 5
   speedIncreasePoint: 0.1
   RagdollController: {fileID: 4486727213915733715}
+  restartPanel: {fileID: 0}
 --- !u!1 &1980418065167349573
 GameObject:
   m_ObjectHideFlags: 0
