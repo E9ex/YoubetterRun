@@ -1,14 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class GroundSpawner : MonoBehaviour
 {
     public GameObject groundTile;
     private Vector3 NextSpawnPoint;
-    
-    
     private void Start()
     {
         for (int i = 0; i < 15; i++)
@@ -16,7 +10,6 @@ public class GroundSpawner : MonoBehaviour
             spawnTile();
         }
     }
-
     public void spawnTile()
     {
         GameObject temp= Instantiate(groundTile, NextSpawnPoint, Quaternion.identity);

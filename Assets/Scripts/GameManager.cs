@@ -1,30 +1,23 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-
 public class GameManager : MonoBehaviour
 {
  public static int  score = 0;
  public static int  bestscore = 0;
   public TextMeshProUGUI Scoretext,BestScoretext;
+  public Button taptoplay;
   private PlayerController PlayerController;
-
-
   private void Awake()
   {
     PlayerController = GameObject.FindObjectOfType<PlayerController>();
   }
-
   private void Start()
   {
     BestScoretext.text = "BestScore: "+PlayerPrefs.GetInt("bestscore").ToString();
     bestscore = PlayerPrefs.GetInt("bestscore");
     BestScoretext.text = "Best: "+bestscore.ToString();
   }
-
   public void addPoints(int point)
   {
     score += point;
@@ -36,6 +29,9 @@ public class GameManager : MonoBehaviour
       PlayerPrefs.SetInt("bestscore", bestscore);
     }
   }
-
-  
+  public void startGame()
+  {
+    PlayerController.alive = true;
+    taptoplay.gameObject.SetActive(false);
+  }
 }

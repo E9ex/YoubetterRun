@@ -1,8 +1,5 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
 public class PlayerController : MonoBehaviour
 {
    public static bool alive = true;
@@ -13,15 +10,26 @@ public class PlayerController : MonoBehaviour
    private GameManager _gameManager;
    private Animator zipladiMi;
    private bool isJump = true;
-    
-    
-    private void Awake()
+   public static bool isRestart = false;
+   private void Awake()
     {
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
         zipladiMi = GetComponent<Animator>();
     }
-
+    private void Start()
+    {
+        if (isRestart)
+        {
+            alive = true;
+            _gameManager.taptoplay.gameObject.SetActive(false);
+        }
+        else
+        {
+            alive = false;
+            _gameManager.taptoplay.gameObject.SetActive(true);
+        }
+    }
     private void FixedUpdate()
     {
         if (!alive)
@@ -36,9 +44,7 @@ public class PlayerController : MonoBehaviour
         {
             zipladiMi.SetBool("zipla",false);
         }
-
     }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)&&isJump)
@@ -48,8 +54,6 @@ public class PlayerController : MonoBehaviour
             isJump = false;
         }
     }
-
-
     void Jump()
     {
         if (Input.GetButtonDown("Jump"))
@@ -57,8 +61,6 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
         }
     }
-
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacles"))
@@ -83,15 +85,12 @@ public class PlayerController : MonoBehaviour
     {
         alive = false;
         Debug.Log("öldük bekle 2 saniye.");
-            Invoke("restartGame",2);
+        Invoke("restartGame",2);
     }
     public void restartGame()
     {
-        alive = true;
+        isRestart = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         GameManager.score = 0;
     }
-
-
-
 }//class
