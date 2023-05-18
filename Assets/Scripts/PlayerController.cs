@@ -5,17 +5,20 @@ public class PlayerController : MonoBehaviour
    public static bool alive = true;
     public float speed = 5;
     private Rigidbody rb;
+    private Collider cl;
     private float HorizontalInput;
     public float speedIncreasePoint = .1f;
    private GameManager _gameManager;
    private Animator zipladiMi;
+   public ragdollController RagdollController;
    
    private bool isJump = true;
    public static bool isRestart = false;
    private void Awake()
-    {
-        _gameManager = GameObject.FindObjectOfType<GameManager>();
+   {
+       _gameManager = GameObject.FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
+        cl = GetComponent<CapsuleCollider>();
         zipladiMi = GetComponent<Animator>();
     }
     private void Start()
@@ -88,7 +91,10 @@ public class PlayerController : MonoBehaviour
     {
         alive = false;
         Debug.Log("öldük bekle 2 saniye.");
-        Invoke("restartGame",2);
+        Invoke("restartGame",4);
+        cl.enabled=false;
+        rb.isKinematic = true;
+        RagdollController.OpenRigidbody();
     }
     public void restartGame()
     {
