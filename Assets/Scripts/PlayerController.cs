@@ -46,17 +46,17 @@ public class PlayerController : MonoBehaviour
         Vector3 forwardMove = transform.forward * speed * Time.deltaTime;
         Vector3 horizontalMove = transform.right * HorizontalInput * speed * Time.deltaTime;
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
-        if (HorizontalInput==0)
-        {
-            zipladiMi.SetBool("zipla",false);
-        }
+       // if (HorizontalInput==0)
+       //  {
+       //      zipladiMi.SetBool("zipla",false);
+       //  }
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)&&isJump)
         {
             Jump();
-            zipladiMi.SetBool("zipla",true);
+            zipladiMi.SetTrigger("ZipladiMi");
             isJump = false;
         }
     }
