@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+
 public class PlayerController : MonoBehaviour
 {
    public static bool alive = true;
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
             _gameManager.taptoplay.gameObject.SetActive(false);
             _gameManager.helpbutton.gameObject.SetActive(false);
             _gameManager.basladiMi.SetBool("Basla",true);
+            GameManager.score = 0;
         }
         else
         {
